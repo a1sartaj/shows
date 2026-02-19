@@ -38,7 +38,7 @@ const Home = () => {
         return () => clearInterval(interval)
     }, [movies])
 
-    if (!movies.length) return null
+    if (!movies?.length) return null
 
     const heroMovie = movies[index]
 
