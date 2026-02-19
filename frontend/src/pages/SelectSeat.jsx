@@ -66,7 +66,6 @@ const SelectSeat = () => {
 
         } catch (error) {
             toast.error(error.response?.data?.message || "Booking failed");
-            console.log(error)
         }
     };
 

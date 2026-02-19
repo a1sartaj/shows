@@ -59,7 +59,7 @@ const Movies = () => {
 
 
     useEffect(() => {
-        if (!pagination.totalPages) return
+        if (!pagination?.totalPages) return
         const pageFromURL = parseInt(searchParams.get('page') || 1);
 
         // If URL page cross the totalpage it covert into total page for in the url
@@ -70,7 +70,7 @@ const Movies = () => {
     }, [pagination])
 
     const handleNext = () => {
-        if (page < pagination.totalPages) {
+        if (page < pagination?.totalPages) {
             setSearchParams({ page: page + 1 })
         }
     }
