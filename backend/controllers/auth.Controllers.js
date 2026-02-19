@@ -24,6 +24,8 @@ export const getMe = async (req, res) => {
 
 export const login = async (req, res) => {
 
+    console.log("Login")
+
     const { email, password } = req.body;
 
     if (!email || !password) {

@@ -8,15 +8,5 @@ const axiosInstance = axios.create({
     }
 })
 
-// axiosInstance.interceptors.response.use(
-//     (response) => response, // Return the response directly if it's successful
-
-//     (error) => {
-//         if(error.response?.status === 401) {
-
-//         }
-//     }
-// )
-
 
 export default axiosInstance
