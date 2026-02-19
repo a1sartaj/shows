@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+
+@theme {
+    /* ========== Dark Backgrounds ============ */
+    --color-background: #0F172A;
+    /* Main background (dark blue-black) */
+    --color-surface: #111827;
+    /* Cards / navbar background */
+    --color-surface-dark: #020617;
+    /* Deeper sections / footer */
+
+    /* ============== Primary Red (CTA / Buttons) =================== */
+    --color-button-primary: #DC2626;
+    /* Main red button (Login, Book Ticket) */
+    --color-button-primary-hover: #B91C1C;
+    /* Hover / active state */
+    --color-button-primary-soft: #EF4444;
+    /* Highlight / alert */
+
+    /* ================== Text ====================== */
+    --color-text-primary: #FFFFFF;
+    /* Primary text (headings) */
+    --color-text-secondary: #E5E7EB;
+    /* Normal paragraph text */
+    --color-text-muted: #9CA3AF;
+    /* Muted / secondary text */
+
+    /* =================== Borders ==================== */
+    --color-border-dark: #1F2937;
+    /* Borders / separators */
+    --color-border-soft: #374151;
+    /* Input border */
+
+    /* ================= Glass surfaces (transparent) ================= */
+    --color-glass-bg: rgba(171, 185, 201, 0.73);
+    --color-glass-bg-mobile: rgba(171, 185, 201);
+
+}
