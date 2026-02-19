@@ -42,7 +42,7 @@ const MyBooking = () => {
 
       <div className='flex w-full items-center flex-col gap-2' >
 
-        {history.map((his, index) => (
+        {history?.map((his, index) => (
           <div key={index} className='flex justify-between gap-2 flex-wrap max-w-3xl bg-white w-full p-4 rounded-lg text-black' >
             {/*Left Side for Image  */}
             <img src={`https://image.tmdb.org/t/p/w500${his.posterPath}`} alt={his.title} className='w-32 aspect-[1/1] rounded-lg' />

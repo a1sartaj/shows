@@ -40,7 +40,7 @@ const MovieTrailerSection = () => {
             />
 
             <div className='flex gap-4 flex-wrap' >
-                {trailers.map((trailer, index) => {
+                {trailers?.map((trailer, index) => {
                     return trailer ? (
                         <img
                             key={index}

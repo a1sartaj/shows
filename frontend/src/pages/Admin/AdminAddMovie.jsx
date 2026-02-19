@@ -101,7 +101,7 @@ const AdminAddMovie = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
-          {movies.map((movie) => (
+          {movies?.map((movie) => (
             <div
               key={movie.id}
               className="flex flex-col justify-between rounded-lg border overflow-hidden bg-glass-bg"

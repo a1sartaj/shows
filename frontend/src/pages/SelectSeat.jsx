@@ -86,7 +86,7 @@ const SelectSeat = () => {
 
                     <div className="flex md:flex-col flex-wrap gap-2">
                         {
-                            dates.map((date, index) => (
+                            dates?.map((date, index) => (
                                 <button
                                     onClick={() => {
                                         setSelectedDate(date)
@@ -108,7 +108,7 @@ const SelectSeat = () => {
                         <h2 className="text-lg sm:text-xl font-semibold mb-3">Select Time</h2>
 
                         <div className="flex flex-wrap gap-2 mb-8">
-                            {shows.map((show, timeIndex) => (
+                            {shows?.map((show, timeIndex) => (
                                 <button
                                     onClick={() => {
                                         setSelectedShow(show)
@@ -139,11 +139,11 @@ const SelectSeat = () => {
 
 
                         {/* ===== SUMMARY ===== */}
-                        {selectedSeats.length > 0 && (
+                        {selectedSeats?.length > 0 && (
                             <div className="mt-8">
                                 <div className="mb-6" >
                                     Seats:{" "}
-                                    {selectedSeats.map((s) => <span key={s}>{`${s}, `}</span>)}
+                                    {selectedSeats?.map((s) => <span key={s}>{`${s}, `}</span>)}
                                 </div>
 
                                 <div className="mb-6">Total: ₹ {selectedSeats.length * selectedShow.price}</div>

@@ -2,7 +2,7 @@
 
 A full-stack production-style **Movie Ticket Booking Web Application** built with the **MERN stack**. Users can browse movies, select shows, choose seats, and book tickets, while Admin can manage movies, shows, and users.
 
-##🚀 Live Demo
+## 🚀 Live Demo
 - 🌐 Website: https://shows.a1sartaj.in
 - 👨‍💻 GitHub: https://github.com/a1Sartaj/shows
 

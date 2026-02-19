@@ -29,7 +29,7 @@ const LetestMovie = () => {
             {/* its title has been written in Home.jsx like Treding Movies */}
 
             {
-                letetMovies.map((trend, index) => (
+                letetMovies?.map((trend, index) => (
                     <Card key={index} movie={trend} />
                 ))
             }

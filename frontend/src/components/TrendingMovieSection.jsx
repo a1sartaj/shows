@@ -29,7 +29,7 @@ const TrendingMovieSection = () => {
             {/* its title has been written in Home.jsx like Treding Movies */}
 
             {
-                trending.map((trend, index) => (
+                trending?.map((trend, index) => (
                     <Card key={index} movie={trend} />
                 ))
             }

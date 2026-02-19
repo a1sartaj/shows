@@ -49,7 +49,7 @@ const MovieDetails = () => {
         ? new Date(movie.releaseDate).getFullYear()
         : "N/A";
 
-    const genres = movie.genres?.map((g) => g.name).join(" | ") || "Unknown";
+    const genres = movie?.genres?.map((g) => g.name).join(" | ") || "Unknown";
 
     return (
         <section className="w-full text-white -mt-14 md:-mt-24">

@@ -42,7 +42,7 @@ const AdminMovies = () => {
                 </div>
             ) : (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {movies.map((movie) => (
+                    {movies?.map((movie) => (
                         <div
                             key={movie._id}
                             onClick={() => navigate(`/admin/movies/${movie._id}/add-show`)}

@@ -1,7 +1,6 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const AdminNavbar = () => {
-  const navigate = useNavigate();
 
   return (
     <nav className="flex justify-between items-center max-w-7xl mx-auto px-2 xl:px-0 text-lg">
