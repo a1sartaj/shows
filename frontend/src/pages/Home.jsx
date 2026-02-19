@@ -29,10 +29,10 @@ const Home = () => {
 
     // auto slide every 7 sec
     useEffect(() => {
-        if (movies.length === 0) return
+        if (movies?.length === 0) return
 
         const interval = setInterval(() => {
-            setIndex(prev => (prev + 1) % movies.length)
+            setIndex(prev => (prev + 1) % movies?.length)
         }, 7000)
 
         return () => clearInterval(interval)
