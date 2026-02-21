@@ -7,6 +7,7 @@ import tmdbRouter from './routes/tmdb.Routes.js';
 import cors from 'cors'
 import showRouter from './routes/show.Routes.js';
 import bookingRouter from './routes/book.Routes.js';
+import "./jobs/autoGenerateShows.js";
 
 const app = express();
 
@@ -15,8 +16,8 @@ app.use(express.json())
 app.use(cors())
 
 // Connect to DB
-connectDB();  
-  
+connectDB();
+
 // Routes
 app.get('/', (req, res) => {
     res.send('Hello, World movie!');

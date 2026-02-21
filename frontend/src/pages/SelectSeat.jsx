@@ -32,6 +32,7 @@ const SelectSeat = () => {
             const response = await axiosInstance.get(`/api/show/by-date?movieId=${movieId}&date=${date}`)
 
             setShows(response.data.data)
+            console.log(response.data.data)
 
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to fetch movie, Please try again later')
@@ -129,7 +130,7 @@ const SelectSeat = () => {
                             <h2 className="text-lg sm:text-xl font-semibold mb-3">Select Seats</h2>
 
                             <SeatLayout
-                                totalSeats={34}
+                                totalSeats={selectedShow.totalSeats}
                                 onSeatClick={toggleSeat}
                                 selectedShow={selectedShow}
                                 selectedSeats={selectedSeats}

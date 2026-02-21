@@ -17,8 +17,10 @@ export const addMovieByTMDBId = async (req, res) => {
 
         const tmdbMovie = await getMovieDetailsFromTMDB(tmdbId);
         const tmdbMovieTrailer = await getMovieTrailer(tmdbId);
-        console.log(tmdbMovieTrailer)
-        const officialTrailer = tmdbMovieTrailer.results.find(trailer => trailer.site === 'YouTube' && trailer.type === 'Trailer' && trailer.official === true)
+
+        // console.log(tmdbMovieTrailer)
+
+        const officialTrailer = tmdbMovieTrailer.results.find(trailer => trailer.site === 'YouTube')
         const trailer = officialTrailer ? [{ name: officialTrailer.name, key: officialTrailer.key }] : [];
 
 

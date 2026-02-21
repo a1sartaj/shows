@@ -23,7 +23,6 @@ I have completed most of the features of this like booking, new movies, trending
 - Secure booking ownership validataion
 
 ### 🎬 Movie System
-
 - Movies fetched from TMDB API
 - Admin can import movies via tmdbId
 - TMDB image CDN used (no local storage)
@@ -65,6 +64,7 @@ I have completed most of the features of this like booking, new movies, trending
 - Delete users
 - Manage movies (TMDB import)
 - Manage shows (create & view)
+- Auto shows create through node-cron
 - Role-based admin protection
 
 ### 💻 Frontend
@@ -110,6 +110,7 @@ I have completed most of the features of this like booking, new movies, trending
 - bcryptjs
 - jsonwebtoken
 - dotenv
+- node-cron
 
 ## 🔑 Environment Variables
 ### 💻 Frontend (.env)

@@ -1,6 +1,6 @@
 const COLS = 10;
 
-const SeatLayout = ({ totalSeats = 24, onSeatClick, selectedShow, selectedSeats }) => {
+const SeatLayout = ({ totalSeats, onSeatClick, selectedShow, selectedSeats }) => {
   const seats = Array.from({ length: totalSeats }, (_, i) => i + 1);
   const remainder = totalSeats % COLS;
 
