@@ -195,7 +195,6 @@ I have completed most of the features of this like booking, new movies, trending
 - Seat HOLD system (5 min)
 - Real-time seat update (Socket.io)
 - Payment gateway (Razorpay / Stripe)
-- Booking history page
 - Cancel booking → release seats
 - Ticket PDF download
 - Email ticket

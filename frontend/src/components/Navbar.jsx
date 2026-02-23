@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 import { FaBars } from "react-icons/fa";
 import MobileNavbar from './MobileNavbar';
+import UserDropdown from './UserDropdown';
 
 
 const Navbar = () => {
@@ -34,13 +35,13 @@ const Navbar = () => {
                 )}
             </ul>
 
-            {/* ============ Mobile navbar ========== */}
-            <MobileNavbar user={user} />
+            <div className='flex gap-2 items-center justify-center' >
+                {/* ============ Mobile navbar ========== */}
+                <MobileNavbar user={user} />
 
-            {/* ============ Login button and hamburger ============== */}
-            <div className='hidden md:flex gap-2 items-center justify-center' >
+                {/* ============ Login button and hamburger ============== */}
                 {user ? (
-                    <button onClick={logout} className='px-6 py-2 text-sm md:text-lg bg-button-primary hover:bg-button-primary-hover hover:scale-95 rounded-lg transition-all duration-300 ease-in cursor-pointer'>Logout</button>
+                    <UserDropdown user={user} onLogout={logout} />
                 ) : (
                     <button onClick={() => navigate('/login')} className='px-6 py-2 text-sm md:text-lg bg-button-primary hover:bg-button-primary-hover hover:scale-95 rounded-lg transition-all duration-300 ease-in cursor-pointer'>Login</button>
                 )}

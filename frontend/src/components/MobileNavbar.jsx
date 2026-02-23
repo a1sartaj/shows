@@ -27,9 +27,9 @@ const MobileNavbar = ({ user }) => {
     return (
         <nav className='relative md:hidden' ref={menuRef} >
             {
-                open ? <button onClick={() => setOpen(false)} className='text-2xl' >
+                open ? <button onClick={() => setOpen(false)} className='text-2xl flex items-center justify-center' >
                     <MdClose />
-                </button> : <button onClick={() => setOpen(true)} className='text-xl' >
+                </button> : <button onClick={() => setOpen(true)} className='text-xl flex items-center justify-center' >
                     <FaBars />
                 </button>
             }
