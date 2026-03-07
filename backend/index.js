@@ -8,6 +8,8 @@ import cors from 'cors'
 import showRouter from './routes/show.Routes.js';
 import bookingRouter from './routes/book.Routes.js';
 import "./jobs/autoGenerateShows.js";
+import { generateShows } from './services/generateShows.js';
+import paymentRouter from './routes/payment.routes.js';
 
 const app = express();
 
@@ -23,11 +25,14 @@ app.get('/', (req, res) => {
     res.send('Hello, World movie!');
 })
 
+app.get('/add-show', generateShows)
+
 app.use('/api/auth', authRouter)
 app.use('/api/movie', movieRouter)
 app.use('/api/tmdb', tmdbRouter)
 app.use('/api/show', showRouter)
 app.use('/api/booking', bookingRouter)
+app.use('/api/payment', paymentRouter)
 
 
 // Server Starting

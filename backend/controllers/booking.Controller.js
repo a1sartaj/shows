@@ -6,65 +6,65 @@ import movieModel from "../models/movie.Model.js";
 
 
 
-export const createBooking = async (req, res) => {
+// export const createBooking = async (req, res) => {
 
-    const session = await mongoose.startSession()
-    session.startTransaction()
+//     const session = await mongoose.startSession()
+//     session.startTransaction()
 
-    try {
+//     try {
 
-        const userId = req.user.id;
-        const { showId } = req.body;
-        let { seats } = req.body;
+//         const userId = req.user.id;
+//         const { showId } = req.body;
+//         let { seats } = req.body;
 
-        const show = await showModel.findById(showId).session(session)
+//         const show = await showModel.findById(showId).session(session)
 
-        if (!show) {
-            await session.abortTransaction()
-            session.endSession()
-            return res.status(404).json({ success: false, message: 'Show not found' })
-        }
+//         if (!show) {
+//             await session.abortTransaction()
+//             session.endSession()
+//             return res.status(404).json({ success: false, message: 'Show not found' })
+//         }
 
-        const alreadyBooked = seats.some((seat) => show.bookedSeats.includes(seat))
+//         const alreadyBooked = seats.some((seat) => show.bookedSeats.includes(seat))
 
-        if (alreadyBooked) {
-            await session.abortTransaction()
-            session.endSession()
-            return res.status(400).json({ success: false, message: 'One or more seats are already booked' })
-        }
+//         if (alreadyBooked) {
+//             await session.abortTransaction()
+//             session.endSession()
+//             return res.status(400).json({ success: false, message: 'One or more seats are already booked' })
+//         }
 
-        show.bookedSeats.push(...seats)
-        await show.save({ session })
+//         show.bookedSeats.push(...seats)
+//         await show.save({ session })
 
-        const totalAmount = seats.length * show.price
+//         const totalAmount = seats.length * show.price
 
-        const booking = await bookingModel.create(
-            [
-                {
-                    userId,
-                    showId,
-                    movieId: show.movieId,
-                    seats,
-                    totalAmount,
-                    showDateTime: show.showDateTime,
-                    screen: show.screen,
-                    language: show.language,
-                    format: show.format,
-                },
-            ],
-            { session }
-        )
+//         const booking = await bookingModel.create(
+//             [
+//                 {
+//                     userId,
+//                     showId,
+//                     movieId: show.movieId,
+//                     seats,
+//                     totalAmount,
+//                     showDateTime: show.showDateTime,
+//                     screen: show.screen,
+//                     language: show.language,
+//                     format: show.format,
+//                 },
+//             ],
+//             { session }
+//         )
 
-        await session.commitTransaction()
-        session.endSession()
+//         await session.commitTransaction()
+//         session.endSession()
 
-        return res.status(201).json({ success: true, message: 'Booking created successfully', data: booking[0] })
+//         return res.status(201).json({ success: true, message: 'Booking created successfully', data: booking[0] })
 
-    } catch (error) {
-        console.error('Creating booking error : ', error)
-        return res.status(500).json({ success: false, message: 'Failed to create booking' })
-    }
-}
+//     } catch (error) {
+//         console.error('Creating booking error : ', error)
+//         return res.status(500).json({ success: false, message: 'Failed to create booking' })
+//     }
+// }
 
 export const bookingDetails = async (req, res) => {
     try {

@@ -3,6 +3,8 @@ import SeatLayout from "../components/SeatLayout";
 import axiosInstance from "../lib/axiosInstance";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import PaymentModal from "../components/PaymentModel";
+import PageLoader from "../components/loaders/PageLoader";
 
 const SelectSeat = () => {
 
@@ -12,6 +14,9 @@ const SelectSeat = () => {
     const [shows, setShows] = useState([])
     const [selectedShow, setSelectedShow] = useState('')
     const [selectedSeats, setSelectedSeats] = useState([])
+    const [showPayment, setShowPayment] = useState(false)
+    const [payment, setPayment] = useState({})
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     // Fetching dates from backend
@@ -32,7 +37,6 @@ const SelectSeat = () => {
             const response = await axiosInstance.get(`/api/show/by-date?movieId=${movieId}&date=${date}`)
 
             setShows(response.data.data)
-            console.log(response.data.data)
 
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to fetch movie, Please try again later')
@@ -49,7 +53,7 @@ const SelectSeat = () => {
     const handleBook = async () => {
         try {
             const response = await axiosInstance.post(
-                "/api/booking/book",
+                "/api/payment/create",
                 {
                     showId: selectedShow._id,
                     seats: selectedSeats,
@@ -62,8 +66,8 @@ const SelectSeat = () => {
             toast.success(response.data.message);
             setSelectedSeats([]);
             fetchShow(selectedDate); // refresh booked seats
-            navigate(`/confirmed/${response.data.data._id}`)
-            // console.log(response.data.data._id)
+            setShowPayment(true)
+            setPayment(response.data.payment)
 
         } catch (error) {
             toast.error(error.response?.data?.message || "Booking failed");
@@ -73,13 +77,64 @@ const SelectSeat = () => {
         }
     };
 
+    const verifyPayment = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+
+        await new Promise((resolve) => setTimeout(resolve, 3000))
+
+        try {
+
+            const response = await axiosInstance.post('/api/payment/verify',
+                {
+                    paymentId: payment.paymentId,
+                    status: 'SUCCESS',
+
+                }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+
+            console.log(response.data)
+
+            navigate(`/confirmed/${response.data.bookingId}`)
+
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Payment verify failed");
+            if (error.response?.status === 401) {
+                navigate('/login')
+            }
+            console.log(error)
+        } finally {
+            setShowPayment(false)
+            setLoading(false)
+        }
+    }
+
 
     useEffect(() => {
         fetchDates();
     }, [])
 
+
+    const onClose = () => {
+        setShowPayment(false)
+    }
+
     return (
         <section className="w-full max-w-6xl mx-auto p-3 sm:p-4">
+
+            {
+                showPayment && (
+                    <PaymentModal payment={payment} onClose={onClose} onSubmit={verifyPayment} />
+
+                )
+            }
+
+            {
+                loading && <PageLoader />
+            }
 
             <div className="flex flex-col md:flex-row gap-4 rounded-lg p-3 sm:p-4">
 

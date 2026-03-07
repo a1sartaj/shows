@@ -46,8 +46,9 @@ const App = () => {
             <Route path="/select-seat/:movieId" element={<SelectSeat />} />
             <Route path="/confirmed/:bookingId" element={<UserRoute ><BookingDetails /></UserRoute>} />
             <Route path="/bookings" element={<UserRoute><MyBooking /></UserRoute>} />
+           
 
-            {/* PUBLIC ROUTES */}
+              {/* PUBLIC ROUTES */}
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
             <Route path="/sign-up" element={<PublicRoute><SignUp /></PublicRoute>} />
 
